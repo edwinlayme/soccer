@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="matches-container">
+        <div class="title-matches"> 
+          <div class="label-title">
+            <h3>Partidos:</h3>
+          </div>
+          <div id="date-container">
+            <button id="prev" type="button">&lt;</button> 
+             <div id="date-content">
+              <span id="day-short"></span>
+              <span id="date"></span>
+             </div>
+            <button id="next">&gt;</button>
+          </div>
+          <div id="list-dates"></div>
+      <div class="time-zone">
+        <label for="timezone" class="label-time-zone">Zona horaria:</label>
+        <select id="timezone" class="select-time-zone">
+          <!-- GMT-5 a GMT+5 -->
+          <option value="GMT-5">GMT-5</option>
+          <option value="GMT-4">GMT-4</option>
+          <option value="GMT-3">GMT-3</option>
+          <option value="GMT-2">GMT-2</option>
+          <option value="GMT-1" >GMT-1</option>
+          <option value="GMT+0" selected>GMT+0</option>
+          <option value="GMT+1"     >GMT+1</option>
+          <option value="GMT+2">GMT+2</option>
+          <option value="GMT+3">GMT+3</option>
+          <option value="GMT+4">GMT+4</option>
+          <option value="GMT+5">GMT+5</option>
+        </select>
+       </div>  
+      </div>
+      <div id="matches"></div>
+    </div>
+      <!-- Modal Match Info -->
+      <div id="modal" class="modal">Texto Modal
+      </div>
+      <script src="https://edwinlayme.github.io/matches/matches.js"></script>
+
+</body>
+</html>
