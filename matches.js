@@ -162,15 +162,16 @@ function createMatchElements(matchData) {
 
   return team;
 }
-async function createImage(teamData) {
+ function createImage(teamData) {
   const defaultTeamSrc = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';
   const img = createElement("img", "team-logo");
-  
+
+  img.src = teamData.logo;
   img.alt = teamData.name;
   img.width = 24; 
   img.height = 24;
 
-  const loadLogo = async () => {
+  /*const loadLogo = async () => {
     try {
       const response = await fetch(teamData.logo);
       if(response.status === 404) return defaultTeamSrc;
@@ -182,18 +183,9 @@ async function createImage(teamData) {
 
   img.src = await loadLogo();
 
-  return img;
+  return img;*/
 
 }
-/*async function imageExists(url) {
-  try {
-    const response = await fetch(url, { method: 'HEAD' });
-    return response.ok;
-  } catch (error) {
-    return false;
-  }
-}
-*/
 
 function createName(teamData) {
   const name = createElement("div", "team");
@@ -389,7 +381,10 @@ async function getMatches(date) {
   const matches = [];
   const apiKey = "3aade9eedc75fcad8ca4474270a52fe08cb8cccea5bfda3b684d244c07f91a24";
   const apiUrl = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=${apiKey}&from=${getDateString(date)}&to=${getDateString(date)}`;
-  const response = await fetch(apiUrl);
+  const response = await fetch(apiUrl, {
+    mode: 'no-cors' 
+  });
+
   const data = await response.json();
 
   if (data && data.result && Array.isArray(data.result)) {
