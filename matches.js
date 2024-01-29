@@ -39,7 +39,9 @@ async function displayDate(date) {
 }
 /*****************************Matches Functions*******************************/
 function clearLeaguesContainer() {
-  leaguesContainer.innerHTML = "";
+  while (leaguesContainer.firstChild) {
+    leaguesContainer.removeChild(leaguesContainer.firstChild);
+  }
 }
 
 function displayMatchesByLeague(matches) {
@@ -70,6 +72,7 @@ function displayMatchesByLeague(matches) {
 
 
 function createMatchElements(matchData) {
+  const defaultTeamLogo = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';
   const matchElements = createElement("div", "match");
   const elems = {
      dates:createDateElements(matchData),
@@ -162,16 +165,24 @@ function createMatchElements(matchData) {
 
   return team;
 }
- function createImage(teamData) {
+async function createImage(teamData) {
+  const defaultTeamSrc = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';
+
   const img = createElement("img", "team-logo");
 
-  img.src = teamData.logo;
+  if (teamData.logo) {
+    img.src = teamData.logo;
+  } else {
+    img.src = defaultTeamSrc;
+  }
+
   img.alt = teamData.name;
-  img.width = 24; 
+  img.width = 24;
   img.height = 24;
 
   return img;
 }
+
 
 function createName(teamData) {
   const name = createElement("div", "team");
@@ -212,15 +223,15 @@ function createLeague() {
 }
 /*****************************Common Functions*******************************/
 function parseApiResponse(match) {
-   const defaultTeamSrc = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';
+  /*  const defaultTeamSrc = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';*/
   const [homeGoals, awayGoals] = match.event_final_result.split("-");
   const partialGoalsHalftime = match.event_halftime_result.replace(/ - /, "-");
   const [homeGoalsHalftime, awayGoalsHalftime] = partialGoalsHalftime.split("-");
   const [year, month, day] = match.event_date.split("-");
   const [hour, minutes] = match.event_time.split(":");
   const leagueLogo = match.league_logo ? match.league_logo : match.country_logo;
-  const homeTeamLogo =  match.home_team_logo.status !==404  ? match.home_team_logo : defaultTeamSrc;
-  const awayTeamLogo =  match.away_team_logo.status !==404 ? match.away_team_logo : defaultTeamSrc;
+  //const homeTeamLogo =  match.home_team_logo || defaultTeamSrc;
+  //const awayTeamLogo =  match.away_team_logo || defaultTeamSrc;
   return {
     key:match.event_key,
     leaguekey:match.league_key,
@@ -244,13 +255,13 @@ function parseApiResponse(match) {
     status:match.event_status,
     teams: [
       {
-        logo: homeTeamLogo,
+        logo: match.home_team_logo,
         name: match.event_home_team,
         goals: homeGoals,
         goalshalftime: homeGoalsHalftime,
       },
       {
-        logo: awayTeamLogo,
+        logo: match.away_team_logo,
         name: match.event_away_team,
         goals: awayGoals,
         goalshalftime: awayGoalsHalftime,
@@ -367,8 +378,8 @@ async function getMatches(date) {
   const matches = [];
   const apiKey = "3aade9eedc75fcad8ca4474270a52fe08cb8cccea5bfda3b684d244c07f91a24";
   const apiUrl = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=${apiKey}&from=${getDateString(date)}&to=${getDateString(date)}`;
+  const defaultLogo = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';
   const response = await fetch(apiUrl);
-
   const data = await response.json();
 
   if (data && data.result && Array.isArray(data.result)) {
@@ -376,6 +387,8 @@ async function getMatches(date) {
       const eventTime = match.event_time;
       const eventTimeMinusOneHour = subtractHour(eventTime, 1);
       match.event_time = eventTimeMinusOneHour;
+      match.home_team_logo = match.home_team_logo || defaultLogo;
+      match.away_team_logo = match.away_team_logo || defaultLogo;
       addMatch(match, matches);
     }
   }
