@@ -151,35 +151,51 @@ function createMatchElements(matchData) {
    return leagueIcons;
  }
  function teamElement(teamData) {
-  const defaultTeamSrc = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';
 
   const team = createElement("div", "team-container");
   const elems = {
-    imgLogo: createElement("img", "team-logo"),
-    divName: createElement("div", "team"),
-    divGoals: createElement("div", "team-goals"),
-    divGoalsHalftime: createElement("div", "team-goals-halftime"),
+      logo: createLogo(teamData),
+      name: createName(teamData),
+      goals: createGoals(teamData),
+      goalsHalftime: createGoalsPartials(teamData),
   };
 
-  elems.imgLogo.onerror = function () {
-    elems.imgLogo.onerror = null; 
-    elems.imgLogo.src = defaultTeamSrc;
-  };
-
-  elems.imgLogo.src = teamData.logo || defaultTeamSrc;
-  elems.imgLogo.alt = teamData.name;
-  elems.imgLogo.width = 24;
-  elems.imgLogo.height = 24;
-  elems.divName.textContent = `${teamData.name}`;
-  elems.divGoals.textContent = teamData.goals === undefined || teamData.goals === '' ? '-' : `${teamData.goals}`;
-  elems.divGoalsHalftime.textContent = teamData.goalshalftime === undefined || teamData.goalshalftime === '' ? '' : `(${teamData.goalshalftime})`;
-
-  team.appendChild(elems.imgLogo);
-  team.appendChild(elems.divName);
-  team.appendChild(elems.divGoals);
-  team.appendChild(elems.divGoalsHalftime);
+  team.appendChild(elems.logo);
+  team.appendChild(elems.name);
+  team.appendChild(elems.goals);
+  team.appendChild(elems.goalsHalftime);
 
   return team;
+}
+function createLogo(teamData){
+  const defaultLogo = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';
+  const logo =  createElement("img", "team-logo");
+  logo.onerror = function () {
+    logo.onerror = null; 
+    logo.src = defaultLogo;
+  };
+
+  logo.src = teamData.logo || defaultLogo;
+  logo.alt = teamData.name;
+  logo.width = 24;
+  logo.height = 24;
+  logo.loading = 'lazy';
+  return logo;
+}
+function createName(teamData){
+ const teamName = createElement("div", "team");
+ teamName.textContent = `${teamData.name}`;
+ return teamName;
+}
+function createGoals(teamData){
+  const goals = createElement("div", "team-goals");
+  goals.textContent = teamData.goals === undefined || teamData.goals === '' ? '-' : `${teamData.goals}`;
+return goals;
+}
+function createGoalsPartials(teamData){
+  const goalsPartials = createElement("div", "team-goals-halftime");
+  goalsPartials.textContent = teamData.goalshalftime === undefined || teamData.goalshalftime === '' ? '' : `(${teamData.goalshalftime})`;
+  return goalsPartials;
 }
 function getLeague(leagueKey) {
   if (!leagueCache[leagueKey]) {
