@@ -166,25 +166,12 @@ function createMatchElements(matchData) {
   const defaultTeamSrc = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibBBDPDNz7dyO9xcO6BjNbxzaIja9uehuCm3OoNkeaLGArmzElvpIP7fBp4Q34iOtyHcHAELbnmxOih4HZzKIUJqyW-k7MLK5EwoO23yoVxJRG3eLx8fpE6V9PCpXPZOjmuS2rSdQ8k4VHnf3nJX05M0ZerbdDnGOG0YmVncuAm2ABLrvYhQWSTQBzp5cQ/s320/team_shield_a.webp';
   const img = createElement("img", "team-logo");
 
-  img.src = teamData.logo;
+  img.src = teamData.logo || defaultTeamSrc;
   img.alt = teamData.name;
   img.width = 24; 
   img.height = 24;
 
-  /*const loadLogo = async () => {
-    try {
-      const response = await fetch(teamData.logo);
-      if(response.status === 404) return defaultTeamSrc;
-      return teamData.logo;
-    } catch {
-      return defaultTeamSrc;
-    }
-  }
-
-  img.src = await loadLogo();
-
-  return img;*/
-
+  return img
 }
 
 function createName(teamData) {
