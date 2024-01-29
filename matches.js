@@ -368,9 +368,7 @@ async function getMatches(date) {
   const matches = [];
   const apiKey = "3aade9eedc75fcad8ca4474270a52fe08cb8cccea5bfda3b684d244c07f91a24";
   const apiUrl = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=${apiKey}&from=${getDateString(date)}&to=${getDateString(date)}`;
-  const response = await fetch(apiUrl, {
-    mode: 'no-cors' 
-  });
+  const response = await fetch(apiUrl)
 
   const data = await response.json();
 
