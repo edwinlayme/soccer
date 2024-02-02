@@ -6,7 +6,6 @@ function createClosedModal(text){
     close.addEventListener('click', () => {
       const modal = document.getElementById('modal')
         modal.style.display = 'none';
-        console.log('Cerrando...')
     });
     return close;
   }

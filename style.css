@@ -439,6 +439,9 @@
   #matches-container{
    width:90%;
   }
+  #modal-content{
+    width:85em;
+  }
     #date-container{
     letter-spacing: 1px;
     font-weight:500;

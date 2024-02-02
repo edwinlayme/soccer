@@ -9,7 +9,7 @@ function showModal(matchKey) {
     matchContent.innerHTML = '';
     const titles = createMatchTitles(match);
     const teams = createTeamsContainer(match);
-    console.log(match);   
+//    console.log(match);   
     matchContent.appendChild(titles); 
     matchContent.appendChild(teams);   
     modal.style.display = 'block'; 
