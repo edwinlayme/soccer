@@ -46,9 +46,5 @@ const timezoneSelect = document.getElementById("timezone");
          matchTimes.push(timeElement.textContent);
        });
     }
-    function setdefaultTimeZone(){
-        timezoneSelect.value = "GMT+0";
-       }
-    
-
-    export {setTimeZone,setdefaultTimeZone};
+ 
+    export default setTimeZone;

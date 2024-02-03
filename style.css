@@ -10,11 +10,12 @@
     background-color:#0f172a;
     border:1px solid #0f172a;
     border-radius:0.35rem;
-    letter-spacing: .1rem;
    }
   #date-content{
-    font-size:1rem;
+    padding: .5rem .75rem;
+    font-size:1em;
     font-weight: 600;
+    text-align: center;
     cursor:pointer;
   }
   #day-short{
@@ -24,7 +25,7 @@
     background-color:#020617;
     color:#64748b;
     text-shadow: 1px 1px 1px #263246;
-    padding:0.25rem 0.5rem;
+    padding: .5rem;
     border: 0;
   }
   #prev:hover,#next:hover{
@@ -119,12 +120,17 @@
     color: #94a3b8;
   }
   .league-name {
+    flex: 8;
     color: #0ea5e9;
     text-align: center;
-    font-size: 1.15rem;
-    flex:8;
+    font-size: 1em;
+  }
+  .league-name .name::after{
+    content: ":";
+    padding-right: .5rem;
   }
   .round-league{
+    flex:auto;
     color:#172536;
     text-align:center;
     font-size:1rem;
@@ -134,7 +140,6 @@
     padding:0.25rem;
     border-radius:1rem;
     margin-right:5px;
-    flex:2;
   }
   .label-match{
     height:20px;
@@ -352,6 +357,9 @@
     font-weight: 600;
     padding-right: .5rem;
   }
+  .modal-country::after{
+   content: ":";
+  }
   .modal-league{
     flex:2;
     text-align: left;
@@ -361,7 +369,7 @@
     text-align: center;
     color: #1ea0c0;
     background-color:#0f172a;
-    border-radius: .25rem;
+    border-radius: .5rem;
     padding: .25rem 0;
     font-weight: 600;
   }
@@ -403,8 +411,10 @@
   }
   .date-match,
   .hour-match {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
   }
   .timezone-details
   {
@@ -416,11 +426,14 @@
   .date-details,
   .hour-details {
     margin: .5rem 0 0 0; 
-  }
+  }  
+   .day-details{
+    text-transform: capitalize;
+   }
   .result-match{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 3.5em;
     font-weight: 600;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   .status-match{
     font-size: 1.25em;
@@ -440,14 +453,22 @@
    width:90%;
   }
   #modal-content{
-    width:85em;
+    margin: 25% auto;
+    width:85%;
   }
     #date-container{
-    letter-spacing: 1px;
     font-weight:500;
     }
-     #date-content, .label-title h3{
-     font-size:0.8em;   
+
+     #date-content{
+      padding: .25rem;
+      font-size:.75em;  
+     }
+     #prev,#next{
+      padding:.25rem .5rem;
+     }
+     .label-title {
+      font-size: 0.75em;
      }
      .time-zone {
       flex-direction:column;
@@ -472,7 +493,7 @@
     flex:1;
   }
     .league-name {
-    font-size:0.85rem;   
+    font-size: 0.9em;  
     flex:5;
     }
     .round-league{
@@ -538,6 +559,39 @@
       font-size: .85rem;
       top:-8px;
       left:calc(50% + 5px);
+    }
+    .modal-titles{
+      display: grid;
+      grid-template-columns: 1fr 1fr 2fr min-content;
+      grid-template-rows: repeat(2, 1fr);
+      gap:.25rem 0;
+    }
+    .modal-country{
+      grid-area: 2 / 1 ;
+      margin-left: .5rem;
+    }
+    .modal-league{
+      grid-column: span 3;
+    }
+    .modal-round{
+      grid-area: 1 / 3 ;
+    }
+    .modal-closed{
+      grid-area: 1 / 4 ;
+    }
+    .date-match,
+    .hour-match {
+      flex-direction: column;
+      gap: 0;
+    }
+    .day-details, .date-details, .hour-details {
+      margin: 0;
+    }
+    .result-match{
+      font-size: 2rem;
+    }
+    .team-name {
+    width: auto;
     }
   }
 

@@ -1,4 +1,3 @@
-import { capitalizeFirstLetter } from "../common/common.js";
 
 function getShortDay(date,separator) {
     if(separator ==='/'){
@@ -13,7 +12,7 @@ function getShortDay(date,separator) {
       const formattedDate = `${dateParts[1]}-${dateParts[0]}-${dateParts[2]}`;
       const dateObject = new Date(formattedDate);
       const dayShort = dateObject.toLocaleDateString('es-ES', { weekday: 'long' });
-      return capitalizeFirstLetter(dayShort);
+      return dayShort;
     }
   }
 
