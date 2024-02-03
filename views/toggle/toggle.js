@@ -3,7 +3,7 @@ import { clearDates } from "../../constants/variable.js";
 import { removeFirstChild } from "../../functions/common/common.js";
 import { formatDate } from "../../functions/dates/format.js";
 import { getDates } from "../../functions/dates/listdates.js";
-import displayMatchesByDate from "../matches/Matches.js";
+import displayMatchesByDate from "../matches/matches.js";
 import setdefaultTimeZone from "../timezone/default.js";
 
 let date = new Date();
