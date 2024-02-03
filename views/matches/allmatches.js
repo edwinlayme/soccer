@@ -1,10 +1,9 @@
-import createAllMatches from "./components/AllMatches.js";
+import createAllMatches from "./components/MatchesElements.js";
 import { leagueCache, matches } from "../../constants/cache.js";
-import { getMatches } from "../../data/fetching.js";
 import { sortMatchesByHours } from "../../data/sorted.js";
 import { groupMatchesByLeague } from "../../data/group.js";
 import { getShortDay } from "../../functions/dates/day.js";
-
+import { getMatches } from "../../data/fetching.js";
 
 const leaguesContainer = document.getElementById("matches");
 const setDate = document.getElementById('date');
@@ -19,8 +18,8 @@ async function displayMatchesByDate(date) {
 async function showMatches(date){
     try {
         if (!leagueCache.value) {
-          leagueCache.value = await getMatches(date);  
-          console.clear(); 
+           leagueCache.value =await getMatches(date);
+           console.clear();
         }
         const matchesByLeague = groupMatchesByLeague(leagueCache.value);
         const sortedMatchesByLeague = sortMatchesByHours(matchesByLeague);

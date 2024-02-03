@@ -1,7 +1,7 @@
 import { formatDate } from './functions/dates/format.js';
 import toggleDatesList from './views/toggle/toggle.js';
 import setTimeZone  from './views/timezone/TimeZone.js';
-import displayMatchesByDate from './views/matches/matches.js';
+import displayMatchesByDate from './views/matches/allmatches.js';
 import showNextOrPrevDate from './views/display/setDate.js';
 
 let date = new Date();

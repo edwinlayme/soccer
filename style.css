@@ -562,7 +562,7 @@
     }
     .modal-titles{
       display: grid;
-      grid-template-columns: 1fr 1fr 2fr min-content;
+      grid-template-columns: max-content 1fr 2fr min-content;
       grid-template-rows: repeat(2, 1fr);
       gap:.25rem 0;
     }

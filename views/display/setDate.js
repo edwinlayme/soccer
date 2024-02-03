@@ -1,4 +1,4 @@
-import displayMatchesByDate from "../matches/matches.js";
+import displayMatchesByDate from "../matches/allmatches.js";
 import setdefaultTimeZone from "../timezone/default.js";
 
 import { leagueCache } from "../../constants/cache.js";
