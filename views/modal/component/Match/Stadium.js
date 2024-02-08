@@ -2,6 +2,7 @@ import { createElement } from "../../../../functions/common/common.js";
 
 function addStadium(stadium){
     const stadiumContainer = createElement("div","modal-stadium");
+    if(stadium){
     const elems = {
         labelContainer: createElement("div","label-stadium-info"),
         icon: createElement("span","material-symbols-outlined"),
@@ -12,12 +13,15 @@ function addStadium(stadium){
     elems.label.textContent = 'Estadio: ';
 
     elems.name.textContent = getOnlyNameStadium(stadium);
-   // elems.name.textContent = stadium;
     elems.labelContainer.appendChild(elems.icon);
     elems.labelContainer.appendChild(elems.label);
     stadiumContainer.appendChild(elems.labelContainer);
     stadiumContainer.appendChild(elems.name);
     return stadiumContainer;
+   }
+   else
+    return stadiumContainer;
+
 }
 
 function getOnlyNameStadium(text)
