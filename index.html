@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matches Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,1,0" />
 </head>
 <body>
     <div id="matches-container">
@@ -39,15 +41,18 @@
         </select>
        </div>  
       </div>
-      <div id="matches"></div>
+      <div id="matches">
+        <div id="loading-container" class="loading-container">
+          <div class="loading">
+            <p>Cargando partidos...</p>
+          </div>
+        </div>
+      </div>
     </div>
      <div id="modal" class="modal">
        <div id="modal-content">
     </div>
-
 </div>
-<!--<script type="module" src="index.js"></script>-->
-      
 <script type="module" src="app.js"></script>
 </body>
 </html>

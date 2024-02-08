@@ -25,6 +25,7 @@ async function showMatches(date){
         const sortedMatchesByLeague = sortMatchesByHours(matchesByLeague);
         displayMatchesByLeague(sortedMatchesByLeague);
         matches.value = sortedMatchesByLeague;
+        //console.log(matches.value);
       } catch (error) {
         console.log(error);
       }

@@ -27,7 +27,7 @@ export function translateRound(roundValue, leagueValue) {
         case "Final":
           return "Final";
         case "Semi-finals":
-          return "Semi-Final";
+          return "Semi-Finales";
         case "Quarter-finals":
           return "Cuartos-Final";
         default:

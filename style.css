@@ -3,6 +3,86 @@
     width: 70%;
     margin: 0 auto;
   }
+  #loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    overflow: hidden; 
+  }
+  
+  .loading {
+    background-image: linear-gradient(to bottom, #0d1425, #121b32, #15203a, #182442, #182644);
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .loading p {
+    font-weight: 600;
+    color: #d7e1e6;
+    text-align: center;
+    margin-top: 30%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(90deg, #1f2249, #3a3e7c, #d7e1e6);
+    background-size: 200% 200%;
+    animation: text-wave 2s linear infinite;
+  }
+
+  .loading:before,
+  .loading:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    opacity: 0.6; /* Ajusta la opacidad según sea necesario */
+    transform-origin: 100% 50%;
+    border-radius: 50%;
+  }
+  
+  .loading:before {
+    border-radius: 0% 50% 50% 50%;
+    animation: waveAnimation 2s infinite linear;
+  }
+  
+  .loading:after {
+    border-radius: 50% 50% 50% 0%;
+    animation: waveAnimationReverse 2s infinite linear;
+  }
+  @keyframes text-wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+  @keyframes waveAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes waveAnimationReverse {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-180deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }  
   #date-container{
     display:flex;
     justify-content:space-between;
@@ -278,6 +358,7 @@
     border:1px solid #475569;
     list-style:none;
     display: none; 
+    width: max-content;
   }
   #list li{
     min-width: max-content;
@@ -375,11 +456,11 @@
   }
   .modal-teams-container{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     background-color: #020710;
     width:100%;
-    padding: .5rem 0;
+    padding: 1rem 0;
     margin-left: 1px;
   }
   .modal-team-element{
@@ -400,7 +481,7 @@
    height: 100%;
   }
   .team-name{
-    width: 120px;
+    width: 140px;
     padding-top: 0.5rem;
     text-align: center;
   }
@@ -409,6 +490,13 @@
     flex-direction: column;
     text-align: center;
   }
+  /*.modal-stadium, .modal-referee{
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+  }*/
   .date-match,
   .hour-match {
     display: flex;
@@ -437,6 +525,40 @@
   }
   .status-match{
     font-size: 1.25em;
+  }
+  .info-container{
+    background: linear-gradient(to top, #000306, #030B18);
+  }
+  .label-info{
+    padding: .35rem;
+    margin: 0 auto 0.25rem;
+    background-color: #131721;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+  }
+  .label-referee-info,.label-stadium-info{
+    display: flex;
+    align-items: flex-start;
+    color:#0284c7;
+  }
+  .label-referee,.label-stadium{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    text-transform: uppercase;
+    padding: 0;
+    margin: auto;
+  }
+  .stadium-name, .referee-name{
+    margin:.35rem;
+    text-transform: capitalize;
+  }
+  .modal-stadium,.modal-referee{
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .modal-closed{
     font-weight: 600;
@@ -591,8 +713,7 @@
       font-size: 2rem;
     }
     .team-name {
-    width: auto;
+     max-width: 100px;
+     width: auto;
     }
   }
-
- 

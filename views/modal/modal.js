@@ -1,17 +1,21 @@
 import { matches } from "../../constants/cache.js";
 import { getMatchByKey } from "../../data/match.js";
-import { createMatchTitles,createTeamsContainer } from "./component/index.js";
+import { createMatchTitles,createTeamsContainer,createInfoModal } from "./component/index.js";
 
 function showModal(matchKey) {
     const match = getMatchByKey(matches.value,matchKey);
     const modal = document.getElementById('modal');
     const matchContent = document.getElementById('modal-content');
     matchContent.innerHTML = '';
-    const titles = createMatchTitles(match);
-    const teams = createTeamsContainer(match);
+    const elems ={
+              titles : createMatchTitles(match),
+              teams : createTeamsContainer(match),
+              infoMatch : createInfoModal (match),
+             }
 //    console.log(match);   
-    matchContent.appendChild(titles); 
-    matchContent.appendChild(teams);   
+    matchContent.appendChild(elems.titles); 
+    matchContent.appendChild(elems.teams);  
+    matchContent.appendChild(elems.infoMatch);    
     modal.style.display = 'block'; 
   }
 
