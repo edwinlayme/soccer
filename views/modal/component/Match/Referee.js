@@ -2,6 +2,7 @@ import { createElement } from "../../../../functions/common/common.js";
 
 function addReferee(referee){
     const refereeContainer = createElement("div","modal-referee");
+    if(referee){
    const elems = {
                  labelContainer: createElement("div","label-referee-info"),
                  icon: createElement("span","material-symbols-outlined"),
@@ -15,6 +16,9 @@ function addReferee(referee){
    elems.labelContainer.appendChild(elems.label);
    refereeContainer.appendChild(elems.labelContainer)
    refereeContainer.appendChild(elems.name);
+   return refereeContainer;
+   }
+   else
    return refereeContainer;
 }
 export default addReferee;

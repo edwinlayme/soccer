@@ -1,6 +1,6 @@
 #matches-container{
     font-family: "Gabarito", sans-serif;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
   }
   #loading-container {
@@ -490,13 +490,6 @@
     flex-direction: column;
     text-align: center;
   }
-  /*.modal-stadium, .modal-referee{
-    width: max-content;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 auto;
-  }*/
   .date-match,
   .hour-match {
     display: flex;
@@ -572,7 +565,8 @@
   }
   @media (max-width: 800px) { 
   #matches-container{
-   width:90%;
+   width:calc(100% + 20px);
+   margin: 0 5px;
   }
   #modal-content{
     margin: 25% auto;
@@ -715,5 +709,11 @@
     .team-name {
      max-width: 100px;
      width: auto;
+    }
+    .info-container{
+      font-size: .85em;
+    }
+    .modal-stadium,.modal-referee{
+      width: 100%;
     }
   }
