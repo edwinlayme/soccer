@@ -565,7 +565,7 @@
   }
   @media (max-width: 800px) { 
   #matches-container{
-   width:calc(100% + 20px);
+   width: 100%;
    margin: 0 5px;
   }
   #modal-content{
