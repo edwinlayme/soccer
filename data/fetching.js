@@ -3,7 +3,7 @@ import {getDateString} from '../functions/dates/dates.js';
 
 async function getMatches(date) {
     try {
-      const apiKey = "3aade9eedc75fcad8ca4474270a52fe08cb8cccea5bfda3b684d244c07f91a24";
+      const apiKey = "272ddd797cae75baeb1e6b5a5b1c31a963e0f0997dc25192526ef9745ef1b84e";
       const apiUrl = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=${apiKey}&from=${getDateString(date)}&to=${getDateString(date)}`;
       const response = await fetch(apiUrl);
       const data = await response.json();
