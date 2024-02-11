@@ -1,6 +1,6 @@
 import { matches } from "../../constants/cache.js";
 import { getMatchByKey } from "../../data/match.js";
-import { createMatchTitles,createTeamsContainer,createInfoModal, createTabsInfo } from "./component/index.js";
+import { createMatchTitles,createTeamsContainer, createTabsInfo } from "./component/index.js";
 
 function showModal(matchKey) {
     const match = getMatchByKey(matches.value,matchKey);
@@ -10,13 +10,11 @@ function showModal(matchKey) {
     const elems ={
               titles : createMatchTitles(match),
               teams : createTeamsContainer(match),
-              infoMatch : createInfoModal (match),
-              tabsInfo : createTabsInfo(),
+              tabsInfo : createTabsInfo(match),
              }
 //    console.log(match);   
     matchContent.appendChild(elems.titles); 
     matchContent.appendChild(elems.teams);  
-    matchContent.appendChild(elems.infoMatch); 
     matchContent.appendChild(elems.tabsInfo);   
     modal.style.display = 'block'; 
   }

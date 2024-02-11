@@ -12,7 +12,8 @@ function addStadium(stadium){
     elems.icon.textContent = 'stadium';   
     elems.label.textContent = 'Estadio: ';
 
-    elems.name.textContent = getOnlyNameStadium(stadium);    elems.labelContainer.appendChild(elems.icon);
+    elems.name.textContent = getOnlyNameStadium(stadium);   
+     elems.labelContainer.appendChild(elems.icon);
     elems.labelContainer.appendChild(elems.label);
     stadiumContainer.appendChild(elems.labelContainer);
     stadiumContainer.appendChild(elems.name);
@@ -23,7 +24,6 @@ function addStadium(stadium){
 }
 
 function getOnlyNameStadium(text) {
- 
     const regex = /\b(Estadio|Stadium|Estádio|Stade|Stadio|Stadionul|Stadion|Mini Estadio)\b/gi;
     const replacedText = text.replace(regex, "").trim();
     if(replacedText.includes('('))
@@ -37,31 +37,6 @@ function getOnlyNameStadium(text) {
         else
           return replacedText;
     }
-    /*if (text.includes(',')) {
-        let [name, site] = text.split(",");
-        site = site.replace(/ /g, "");
-        if (name) {
-           // const regex = /\b(Estadio|Stadium|Estádio|Stade|Stadio|Stadionul|Stadion)\b/gi;
-            const replacedText = removeStadiumWords(name);
-            return `${replacedText} (${site})`;
-        }
-    } else {
-        return text;
-    }*/
-}
-function removeStadiumWords(text) {
-    const stadiumWords = ["Estadio", "Stadium", "Estádio", "Stade", "Stadio", "Stadionul", "Stadion","Mini"];
-    let obj = {};
-    
-    text.split(" ").forEach(word => {
-        obj[word] = true;
-    });
-        stadiumWords.forEach(word => {
-        delete obj[word];
-    });
-    
-    // Concatenar las palabras restantes en un string
-    return Object.keys(obj).join(" ");
 }
 
 export default addStadium;

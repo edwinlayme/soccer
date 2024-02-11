@@ -2,6 +2,16 @@ export function translateRound(roundValue, leagueValue) {
     if (roundValue === "") {
       const leagueTemp = leagueValue.replace(/ - /, "-");
       const leagueRound = leagueTemp.split('-')[1];
+      if(!leagueRound)
+      {
+        switch(leagueValue){
+          case "Club Friendlies":
+            return "Amistoso";
+          default:
+            return "Sin Especificar";
+            }
+          }
+      else{
     switch(leagueRound){
       case "Qualification":
         return "Clasificación";
@@ -18,7 +28,8 @@ export function translateRound(roundValue, leagueValue) {
         return "Amistoso";
       default:
         return "Sin Especificar";
-    }
+        }
+      }
     } else {
       const [round, number] = roundValue.split(" ");
       switch (round) {
