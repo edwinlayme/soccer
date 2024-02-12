@@ -4,7 +4,7 @@ import createSoccerField from "./Elements/SoccerField.js";
 import createInfoModal from "./InfoModal.js";
 
 function createTabsInfo(match){
-    const container = createElement("div","tabs-container");
+    const container = createElement("div","tabs-container");   
     const elems = {
             additional : createTab('additional-tab','tab','checked','Detalles'),
             lineups : createTab('lineups-tab','tab','','Alineaciones'),
@@ -19,8 +19,8 @@ function createTabsInfo(match){
             soccerField: createSoccerField(),
     };
     elems.additionalContent.appendChild(elems.infoMatch); 
-    elems.lineupsContent.innerHTML = elems.soccerField;
-    elems.resumeContent.textContent = "tab3";
+    elems.lineupsContent.appendChild(elems.soccerField);
+    elems.resumeContent.textContent = "Resume";
     elems.tabAdditionalContainer.appendChild(elems.additionalContent);
     elems.tabLineupsContainer.appendChild(elems.lineupsContent);
     elems.tabResumeContainer.appendChild(elems.resumeContent);
