@@ -803,13 +803,13 @@
   
   .soccer-field {
     position: relative;
-    /* width: 400px; */
-    /* height: 250px; */
-    /*background-image: url(style.css);*/
-    background-color: #4caf50; 
+     width: 400px; 
+     height: 250px; 
+    background-image: url(https://cdn.jsdelivr.net/gh/edwinlayme/soccer/assets/footballpitch.svg);
     background-size: 50px 25px;
-    /* background-repeat: no-repeat; */
-    /* background-position: center; */
+    background-repeat: no-repeat; 
+    background-position: center; 
+    /*background-color: #4caf50; */
     /* border: 2px solid #fff; */
     /* border-radius: 10px;*/
   }

@@ -5,7 +5,7 @@ const createSoccerField = () => {
     <div class="center-circle"></div>
     <div class="penalty-box left"></div>
     <div class="penalty-box right"></div>
-    <img width="48" height="48" src="https://img.icons8.com/color/48/stadium.png" alt="stadium"/>
+    <img width="48" height="48" src="https://cdn.jsdelivr.net/gh/edwinlayme/soccer@master/assets/footballpitch.svg" alt="stadium"/>
   </div>`;
     return htmlTemplate;
 }
