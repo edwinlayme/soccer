@@ -399,7 +399,7 @@ margin: 0 auto;
   padding: .5rem;
   width: 50%; 
   border-radius: .5rem;
-  margin: 10% auto;
+  margin: 6% auto;
   color:#cbd5e1;
   background-image: linear-gradient(
     to top,
@@ -604,7 +604,7 @@ background-color: #071324;
   padding-top: 12px;
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 300px;
   background-color: #020710;
   border-top: 1px solid #061127;
 }
@@ -649,15 +649,151 @@ background-color: #071324;
   opacity: 1;
   visibility: visible;
 }
+/***********Lineups******/
 .soccer-field {
   position: relative;
-  margin: 0 calc(50% - 200px);
-  width: 400px; 
-  height: 225px;
-  background-size: 400px 100%;
-  background-repeat: no-repeat; 
-  background-position:top center; 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-size: 425px 100%;
+  background-repeat: no-repeat;
+  background-position: left 0;
+}
+.home-lineup, .away-lineup{
+  flex: 1;  
+  font-size: 0.9em;
+  color: #020617;
+  list-style: none;
+  margin: 1px 0;
+  padding: 0;
+}
+.home-lineup li, .away-lineup li {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1px;
+}
+.home-lineup li span, .away-lineup li span{
+text-overflow: ellipsis;
+}
+.home-lineup li h3, .away-lineup li h3{
+  text-align: center;
+  margin: 0 auto;
+}
+.number_player{
+  width: 20px;
+  height: max-content;
+  border: 1px solid #040920;
+  background-color: #007bff; 
+  color: rgba(255, 255, 255, 0.897);
+  border-radius: 0.25rem; 
+  text-align: center;
+}
+.modal-lineups{
+  display: flex;
+  justify-content: space-around;
+  min-width: 400px;
+  margin-left: 1rem;
+  padding: 1px 2px;
+}
+.name_coache{
+margin-right: 0.25rem;
+font-weight: 700;
+color:  #1c2531;
+}
+.label_coache{
+  margin-left: .35rem;
+  font-weight: 700;
+}
+.toggle-btn {
+  display: block;
+  width: 100px;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 16px;
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.suplents-container{
+  position: relative;
+  left: 0.5rem;
+  top: 0;
+  width: max-content;
+  height: max-content;
+  padding: 2px;
+  border: 1px solid #0f172a;
+  background: #020617;
+  border-radius: 0.5rem;
+  display:none;
+ /* display: flex;
+  flex-direction: column;
+  gap: 0.15rem;*/
+}
+.modal-lineups-suplents{
+  display: flex;
+}
+.label-suplents{
+  background-color: #071324;
+  width: max-content;
+  margin: 1px auto 0 auto;
+  padding: 0.15rem 1rem;
+  border-radius: 0.25rem;
+}
+.modal-lineups-suplents .home-lineup,
+.modal-lineups-suplents .away-lineup{
+  font-size: 0.9em;
+  color:#0096FB;
+  border: 1px dotted #0096FB;
+}
+.modal-lineups-suplents .home-lineup h3,
+.modal-lineups-suplents .away-lineup h3{
+text-align: center;
+color: #cbd5e1;
+width: 100%;
+background-color: #0f1627;
+}
+.hidden {
+ /* display: none;*/
+ display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.arrow-right {
+  top: 0;
+  left: 0;
+  position: relative;
+  width: .75rem;
+  height: 0.25rem;
+  background: #fff;
+  transform: rotate(45deg);
+  border-radius: .25rem;
+  cursor: pointer;
+}
+.arrow-right:hover{
+  animation: hover-animation 0.5s ease; 
+}
 
+.arrow-right::after {
+  content: '';
+  position: absolute;
+  width: .75rem;
+  height: 0.25rem;
+  border-radius: inherit;
+  background: inherit;
+  transform: rotate(-90deg) translateY(0.25rem) translateX(-0.25rem);
+}
+@keyframes hover-animation {
+  50% {
+    transform: translateX(.25rem) rotate(45deg); 
+    opacity: 0.5;  
+  }
+  100% {
+    opacity: 0.75;
+  }
 }
 @media (max-width: 800px) { 
 #matches-container{
@@ -778,7 +914,7 @@ margin-right:0;
     display: grid;
     grid-template-columns: max-content 1fr 2fr min-content;
     grid-template-rows: repeat(2, 1fr);
-    gap:.25rem 0;
+    gap:.15rem 0;
   }
   .modal-country{
     grid-area: 2 / 1 ;
@@ -814,8 +950,37 @@ margin-right:0;
   .modal-stadium,.modal-referee{
     width: 100%;
   }
+  .modal-teams-container{
+    padding: 0.25rem 0 0.15rem 0;
+  }
+  .soccer-field {
+    flex-direction: column;
+    background-size: 100% auto;
+  
+  }
+  .home-lineup, .away-lineup{
+    font-size: 0.85em;
+  }
+  .modal-lineups {
+    width: 100%;
+    min-width: auto;
+  }
+  .name_coache{
+    color: #0096FB;
+    margin: 0 auto;
+  }
+  .label_coache{
+    color:#cbd5e1;
+  }
+  .arrow-right {
+    margin-top: -0.25rem;
+  }
+  .modal-lineups-suplents{
+    font-size: 0.85em;
+  }
+  .hidden {
+    position:absolute;
+    left: 1rem;
+  }
 }
 
-
- 
-  

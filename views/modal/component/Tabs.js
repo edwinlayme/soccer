@@ -16,7 +16,7 @@ function createTabsInfo(match){
             lineupsContent : createElement("div", "tab-content"),
             resumeContent : createElement("div", "tab-content"),
             infoMatch : createInfoModal (match),
-            soccerField: createSoccerField(),
+            soccerField: createSoccerField(match),
     };
     elems.additionalContent.appendChild(elems.infoMatch); 
     elems.lineupsContent.appendChild(elems.soccerField);
