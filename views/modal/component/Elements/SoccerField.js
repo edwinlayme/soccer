@@ -15,7 +15,7 @@ const createSoccerField = (data) => {
      elems.container.style.backgroundImage = `url(${logo})`;
      elems.toggle.addEventListener('click', function() {
       isContainerVisible = !isContainerVisible;
-      elems.suplentContainer.classList.toggle('hidden', !isContainerVisible);
+      elems.suplentContainer.classList.toggle('hidden-suplents', !isContainerVisible);
     });
     elems.container.appendChild(elems.lineups);
     elems.container.appendChild(elems.toggle);

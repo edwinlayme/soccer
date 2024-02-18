@@ -756,7 +756,7 @@ color: #cbd5e1;
 width: 100%;
 background-color: #0f1627;
 }
-.hidden {
+.hidden-suplents {
  /* display: none;*/
  display: flex;
   flex-direction: column;
@@ -978,7 +978,7 @@ margin-right:0;
   .modal-lineups-suplents{
     font-size: 0.85em;
   }
-  .hidden {
+  .hidden-suplents {
     position:absolute;
     left: 1rem;
   }
