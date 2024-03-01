@@ -2,6 +2,7 @@ import { createElement } from "../../../functions/common/common.js";
 import createTab from "./Buttons/Tab.js";
 import createSoccerField from "./Elements/SoccerField.js";
 import createInfoModal from "./InfoModal.js";
+import createResumeMatch from "./Match/Resume.js";
 
 function createTabsInfo(match){
     const container = createElement("div","tabs-container");   
@@ -17,10 +18,11 @@ function createTabsInfo(match){
             resumeContent : createElement("div", "tab-content"),
             infoMatch : createInfoModal (match),
             soccerField: createSoccerField(match),
+            resumeMatch: createResumeMatch(match),
     };
     elems.additionalContent.appendChild(elems.infoMatch); 
     elems.lineupsContent.appendChild(elems.soccerField);
-    elems.resumeContent.textContent = "Resume";
+    elems.resumeContent.appendChild(elems.resumeMatch);
     elems.tabAdditionalContainer.appendChild(elems.additionalContent);
     elems.tabLineupsContainer.appendChild(elems.lineupsContent);
     elems.tabResumeContainer.appendChild(elems.resumeContent);
